@@ -1,0 +1,164 @@
+<!-- This is GUI for Used car price prediction Application Using Machine Learning Regression -->
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+
+  <style>
+    /* CSS code for button */
+    body {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    h1{
+        font-size:45;
+        color : #050505;
+        font-family : Georgia, 'Times New Roman', Times, serif,serif;
+    }
+
+    /* CSS code for button */
+     
+
+    #corner {
+        border-radius:25px;
+        background : linear-gradient(to bottom,#1c1d1d85 0%,#000000 100%);  
+        border : 2px solid #0e0d0d;
+        padding : 5px;
+        width : 500px;
+        height: 500px;
+        
+      }
+
+    #fnt{
+        font-size : 23px;
+        color : #b0b1af;
+    }
+
+    #box {
+        border-radius : 15px;
+        border : 2px solid #0e0d0d;
+        width : 250px;
+        height : 25px;
+        font-size : 15px;
+        
+    }
+    #b1{
+        border : 2px solid #0e0d0d;
+        border-radius :2px;
+        width : 100px;
+        height : 50px;
+        font-size : 15px;
+        color :#0e0d0d;
+        background :linear-gradient(to bottom,#bfc4c485 0%,#5c5c5c85);
+    }
+
+    .login {
+       background : linear-gradient(to bottom left,#86c232 0%,#305503 100%);
+       width:100%;
+       height:100%; 
+    }
+   
+  </style>
+
+</head>
+
+<body>
+
+ 
+
+ <div class="login" align="center">
+	
+    <center>
+         <br>
+            <br>
+               <br>
+                  <br>
+    
+    <form action="{{ url_for('predict')}}" method="post">
+                                    
+        
+        <h1 align='center'>Used Car Price Predictor </h1>
+        
+        <table id="corner">
+    	<tr>
+            <td align='center' id="fnt">Car Name :</td>
+            <td><input  id="box" type="text" name="name" placeholder="ex: Maruthi" required="required" /></td>
+        </tr>
+        <tr>
+            <td align='center' id="fnt">Year :</td>
+            <td><input id="box" type="text" name="year" placeholder="car model ex:2002" required="required" /></td>
+        </tr>
+        <tr>
+            <td align='center' id="fnt">KM Driven :</td>
+            <td><input id="box" type="text" name="km_driven" placeholder="Total km driven" required="required" /></td>
+        </tr>
+        <tr>
+            <td align='center' id="fnt">Mileage:</td>
+            <td><input  id="box" type="text" name="mileage" placeholder="in kmpl" required="required" /></td>
+        </tr>
+        <tr>
+            <td align='center' id="fnt">Engine:</td>
+            <td><input  id="box" type="text" name="engine" placeholder="in cc" required="required" /></td>
+        </tr>
+        <tr>
+            <td align='center' id="fnt">Maximum power:</td>
+            <td><input  id="box" type="text" name="max_power" placeholder="in bhp" required="required" /></td>
+        </tr>
+        <tr>
+            <td align='center' id="fnt">Seats:</td>
+            <td><input  id="box" type="text" name="seats" placeholder="no of seats" required="required" /></td>
+        </tr>
+        <tr><td align='center' id="fnt">Transmission type:</td>
+            <td ><select name="transmission" id="box">
+                <option value="manual" align="center">Manual</option>
+                <option value="automatic" align="center">Automatic</option>
+            </select></td></tr>
+        <tr><td align='center' id="fnt">Seller type:</td>
+            <td ><select name="seller_type" id="box">
+                <option value="individual" align="center">Individual</option>
+                <option value="dealer" align="center">Dealer</option>
+                <option value="trustmark dealer" align="center">TrustMark Dealer</option>
+            </select></td></tr>
+        <tr><td align='center' id="fnt">Fuel:</td>
+            <td ><select name="fuel" id="box">
+            <option value="diesel" align="center">Deisel</option>
+            <option value="lpg" align="center">LPG</option>
+            <option value="petrol" align="center">Petrol</option>
+            <option value="cng" align="center">CNG</option>
+        </select></td></tr>
+        <tr><td align='center' id="fnt">Owner:</td>
+            <td ><select name="owner" id="box">
+            <option value="first" align="center">First Hand</option>
+            <option value="second" align="center">Second Hand</option>
+            <option value="third" align="center">Third Hand</option>
+            <option value="fourth" align="center">Fourth and above</option>
+            <option value="test" align="center">Test Drive car</option>
+        </select></td></tr>
+    </table>
+
+
+      
+        <br>
+        <!-- Show button -->
+        <div align="center">
+            <button id="b1" type="submit" ><strong>Predict Car price</strong></button>
+        </div>
+        
+    </form>
+    </center>
+   
+   <!-- Show predicted output using ML model --> 
+   <div>
+       <center>
+   <h1>{{ prediction_text }}</h1>
+       </center>
+   </div>
+
+ </div>
+
+</body>
+</html>
